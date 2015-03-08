@@ -31,44 +31,45 @@ pygame.init()
 
 class Main:
     def __init__(self):
-        pass
     # The __init__ launches automatically when the object is 
     # instantiated. Documentation:
     # http://www.ibiblio.org/g2swap/byteofpython/read/class-init.html
-
-    FPS = 30 # frames per second setting
-    FPSCLOCK = pygame.time.Clock()
     
-    # Font Info
-    BASICFONT = pygame.font.Font('freesansbold.ttf', 32)
+
+        FPS = 30 # frames per second setting
+        FPSCLOCK = pygame.time.Clock()
+    
+        # Font Info
+        BASICFONT = pygame.font.Font('freesansbold.ttf', 32)
 
 
-    # set up the window
-    DISPLAYSURF = pygame.display.set_mode((960, 704), 0, 32)
-    pygame.display.set_caption('i neat video game')
+        # set up the window
+        DISPLAYSURF = pygame.display.set_mode((960, 704), 0, 32)
+        pygame.display.set_caption('i neat video game')
 
-    helloSurf = BASICFONT.render('Hello Kip. Nice pants.', True, (255,255,255))
-    helloRect = helloSurf.get_rect()
-    helloRect.center = (480, 350)
-
-
-
-    DISPLAYSURF.blit(helloSurf, helloRect) 
+        helloSurf = BASICFONT.render('Hello Kip. Nice pants.', True, \
+        (255,255,255))
+        helloRect = helloSurf.get_rect()
+        helloRect.center = (480, 350)
 
 
-    # Alpha - Automatically launch a game session
-    Game = invg.GameSession()
 
-    while True: 
-    # The Main Host Loop
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                # Terminate this Host. End the program (and all running Game Sessions!).
-                pygame.quit()
-                sys.exit()
+        DISPLAYSURF.blit(helloSurf, helloRect) 
 
-        pygame.display.update()
-        FPSCLOCK.tick(FPS)
+
+        # Alpha - Automatically launch a game session
+        Game = invg.GameSession()
+
+        while True: 
+        # The Main Host Loop
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    # Terminate this Host. End the program (and all running Game Sessions!).
+                    pygame.quit()
+                    sys.exit()
+
+            pygame.display.update()
+            FPSCLOCK.tick(FPS)
 
 # Instantiate a Host:
 
