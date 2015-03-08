@@ -29,6 +29,21 @@ pygame.init()
 # migrate games to other Hosts (load balancing).
 #
 
+
+
+# Let's create some global variables here.
+WINWIDTH = 960
+WINHEIGHT = 704
+HALFWIDTH = WINWIDTH/2
+HALFHEIGHT = WINHEIGHT/2
+
+
+BASICFONT = pygame.font.Font('freesansbold.ttf', 32)
+
+# Color Palette
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
 class Main:
     def __init__(self):
     # The __init__ launches automatically when the object is 
@@ -38,23 +53,20 @@ class Main:
 
         FPS = 30 # frames per second setting
         FPSCLOCK = pygame.time.Clock()
-    
-        # Font Info
-        BASICFONT = pygame.font.Font('freesansbold.ttf', 32)
 
+        # Create player object.
+        player = invg.Player(WINHEIGHT, WINWIDTH)
+        player.img = pygame.image.load('Braid_132x132.png')
 
         # set up the window
-        DISPLAYSURF = pygame.display.set_mode((960, 704), 0, 32)
+        DISPLAYSURF = pygame.display.set_mode((WINWIDTH, WINHEIGHT), 0, 32)
         pygame.display.set_caption('i neat video game')
 
-        helloSurf = BASICFONT.render('Hello Kip. Nice pants.', True, \
-        (255,255,255))
+        helloSurf = BASICFONT.render('Hello Kip. Nice pants.', True, WHITE)
         helloRect = helloSurf.get_rect()
-        helloRect.center = (480, 350)
+        helloRect.center = (450, 350)
 
 
-
-        DISPLAYSURF.blit(helloSurf, helloRect) 
 
 
         # Alpha - Automatically launch a game session
@@ -64,9 +76,32 @@ class Main:
         # The Main Host Loop
             for event in pygame.event.get():
                 if event.type == QUIT:
-                    # Terminate this Host. End the program (and all running Game Sessions!).
+                    # Terminate this Host. End the program
+                    # (and all running Game Sessions!)
                     pygame.quit()
                     sys.exit()
+                
+            # Move the Character
+            keys_pressed = pygame.key.get_pressed()
+            if keys_pressed[K_LEFT] or keys_pressed[K_a]:
+                player.x -= 5
+            if keys_pressed[K_RIGHT] or keys_pressed[K_d]:
+                player.x += 5
+            if keys_pressed[K_UP] or keys_pressed[K_w]:
+                player.y -= 5
+            if keys_pressed[K_DOWN] or keys_pressed[K_s]:
+                player.y += 5
+                  
+            # Shit gets weird without this.
+            DISPLAYSURF.fill(BLACK)
+ 
+            # Draw the welcome message
+            DISPLAYSURF.blit(helloSurf, helloRect) 
+
+            # Draw the player here.
+            player.rect = pygame.Rect(player.x, player.y, player.size, \
+                                                            player.size)
+            DISPLAYSURF.blit(player.img, player.rect)
 
             pygame.display.update()
             FPSCLOCK.tick(FPS)

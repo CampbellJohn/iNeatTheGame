@@ -62,8 +62,10 @@ class Menu:
 
 class Player:
     # The __init__ launches automatically when the object is instantiated.
-    def __init__(self):
-        pass
+    def __init__(self, WINHEIGHT, WINWIDTH):
+        self.size = 132
+        self.x = WINHEIGHT/2
+        self.y = WINWIDTH/2
 
 class Room:
     # The __init__ launches automatically when the object is instantiated.
