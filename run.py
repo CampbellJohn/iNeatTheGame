@@ -2,6 +2,12 @@
 import invg, pygame, sys
 from pygame.locals import *
 
+# Comment Conventions:
+# Normal comments are intended as permanent.
+# DEL-KIP: Message for Kip. Gen. message or temp info. Delete when you get it.
+# ATTENTION-JOHN: Either a to-do or a warning label.
+
+
 # Initialize pygame
 pygame.init()
 
@@ -30,27 +36,24 @@ pygame.init()
 #
 
 
-
 # Let's create some global variables here.
 WINWIDTH = 960
 WINHEIGHT = 704
 HALFWIDTH = WINWIDTH/2
 HALFHEIGHT = WINHEIGHT/2
 
-
+# Designate our font.
+# DEL-KIP: Haven't looked into alternate fonts yet. I'm sure Pygame's got a few 
 BASICFONT = pygame.font.Font('freesansbold.ttf', 32)
 
 # Color Palette
+# DEL-KIP: Gonna add a few more here eventually. Pretty certain these are
+# ...RGB values.
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 
 class Main:
     def __init__(self):
-    # The __init__ launches automatically when the object is 
-    # instantiated. Documentation:
-    # http://www.ibiblio.org/g2swap/byteofpython/read/class-init.html
-    
-
         FPS = 30 # frames per second setting
         FPSCLOCK = pygame.time.Clock()
 
@@ -107,7 +110,8 @@ class Main:
             FPSCLOCK.tick(FPS)
 
 # Instantiate a Host:
-
+# DEL-KIP: I moved this piece of code down. I think it was at the top before? It
+# ...kept trying to instantiate Main() before the definition of Main()
 Host = Main()
 
 
