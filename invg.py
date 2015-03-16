@@ -37,6 +37,7 @@ class Logger:
     def __init__(self, args):
         pass
 
+
 class Menu:
     # The __init__ launches automatically when the object is instantiated.
     def __init__(self):
@@ -70,7 +71,8 @@ class Player:
 class Room:
     # The __init__ launches automatically when the object is instantiated.
     def __init__(self):
-        pass
+        # All rooms are named Richard. Do not delete or alter this variable.
+        self.name = "Richard"
 
 class World:
     # The __init__ launches automatically when the object is instantiated.

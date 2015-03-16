@@ -41,6 +41,7 @@ WINWIDTH = 960
 WINHEIGHT = 704
 HALFWIDTH = WINWIDTH/2
 HALFHEIGHT = WINHEIGHT/2
+MOVERATE = 9
 
 # Designate our font.
 # DEL-KIP: Haven't looked into alternate fonts yet. I'm sure Pygame's got a few 
@@ -73,7 +74,7 @@ class Main:
 
 
         # Alpha - Automatically launch a game session
-        Game = invg.GameSession()
+        # Game = invg.GameSession()
 
         while True: 
         # The Main Host Loop
@@ -87,13 +88,13 @@ class Main:
             # Move the Character
             keys_pressed = pygame.key.get_pressed()
             if keys_pressed[K_LEFT] or keys_pressed[K_a]:
-                player.x -= 5
+                player.x -= MOVERATE 
             if keys_pressed[K_RIGHT] or keys_pressed[K_d]:
-                player.x += 5
+                player.x += MOVERATE 
             if keys_pressed[K_UP] or keys_pressed[K_w]:
-                player.y -= 5
+                player.y -= MOVERATE 
             if keys_pressed[K_DOWN] or keys_pressed[K_s]:
-                player.y += 5
+                player.y += MOVERATE 
                   
             # Shit gets weird without this.
             DISPLAYSURF.fill(BLACK)
